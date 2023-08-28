@@ -1,5 +1,6 @@
 import 'package:demo_1/view/widget/button_widget.dart';
 import 'package:demo_1/view/widget/input_widget.dart';
+import 'package:demo_1/view/widget/suffix_buttton_widget.dart';
 import 'package:flutter/material.dart';
 
 class SettingScreen extends StatefulWidget {
@@ -17,6 +18,10 @@ class _SettingScreenState extends State<SettingScreen> {
   void onPressSetting () {
     // ignore: avoid_print
     print('You click right here!');
+  }
+  void onPressChangePassword () {
+    // ignore: avoid_print
+    print('You clicked change password!');
   }
 
   @override
@@ -58,6 +63,10 @@ class _SettingScreenState extends State<SettingScreen> {
                     controller: passwordController,
                     iconInput: 'assets/images/pass_word_icon.png',
                     isPassword: true,
+                    suffixButton: SuffixButton(
+                      lable: 'Change',
+                      onPress: onPressChangePassword,
+                    ),
                   ),
                   InputWidget(
                     lable: 'Authenticate',
@@ -72,7 +81,10 @@ class _SettingScreenState extends State<SettingScreen> {
               bottom: 0,
               left: 0,
               right: 0,
-              child: ButtonWidget(lable: 'Save Settings', onPress: onPressSetting, icon: 'assets/images/pass_word_icon.png')
+              child: ButtonWidget(
+                lable: 'Save Settings',
+                onPress: onPressSetting,
+                ),
               )
           ],
         ),

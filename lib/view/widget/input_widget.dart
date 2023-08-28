@@ -7,6 +7,7 @@ class InputWidget extends StatefulWidget {
   final TextInputType keyboardType;
   final bool isPassword;
   final String iconInput;
+  final Widget? suffixButton;
 
   const InputWidget({
     Key? key,
@@ -15,6 +16,7 @@ class InputWidget extends StatefulWidget {
     required this.controller,
     this.keyboardType = TextInputType.text,
     this.isPassword = false,
+    this.suffixButton,
     required this.iconInput,
   }) : super(key: key);
 
@@ -45,6 +47,10 @@ class _InputWidgetState extends State<InputWidget> {
                   scale: 0.4,
                   child: Image.asset(widget.iconInput),
                 ),
+                suffixIcon:   widget.suffixButton != null ? Container(
+                  constraints: BoxConstraints(maxWidth: 150),
+                  child: widget.suffixButton,
+                ) : null,
                 border: OutlineInputBorder(
                   borderSide:const BorderSide(width: 0.5, color: Color(0xAAE9E9E9)),
                   borderRadius: BorderRadius.circular(36)

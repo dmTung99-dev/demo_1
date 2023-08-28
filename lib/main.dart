@@ -1,5 +1,6 @@
 import 'package:demo_1/view/auth/setting_view.dart';
 import 'package:demo_1/view/home/home_view.dart';
+import 'package:demo_1/view/intro/intro_view.dart';
 import 'package:demo_1/view/splash/splash_view.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/home': (context) => const HomeScreen(),
         '/setting': (context) => const SettingScreen(),
+        '/intro': (context) => const IntroScreen(),
       }
     );
   }
