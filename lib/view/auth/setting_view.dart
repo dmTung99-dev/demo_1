@@ -13,7 +13,7 @@ class SettingScreen extends StatefulWidget {
 
 class _SettingScreenState extends State<SettingScreen> {
   TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController= TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   void onPressSetting () {
     // ignore: avoid_print

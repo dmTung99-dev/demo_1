@@ -15,8 +15,16 @@ class _IntroScreenState extends State<IntroScreen> {
   int currentIndex = 0;
 
   void onPressSetting () {
+    setState(() {
+      currentIndex++;
+      print('You click right here! Current index: $currentIndex');
+    });
+    if (currentIndex == 3) {
+      currentIndex = 0;
+      Navigator.pushReplacementNamed(context, '/home');
+    }
     // ignore: avoid_print
-    print('You click right here!');
+    // print('You click right here!: $currentIndex');
   }
 
   @override
@@ -24,29 +32,29 @@ class _IntroScreenState extends State<IntroScreen> {
     return Scaffold(
       body: SizedBox(
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.fromLTRB(15, 50, 15, 15),
           child: Stack(
             children: [
               SizedBox(
                 // height: 200,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 60, 0, 0),
-                  child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset(introList[currentIndex].image),
-                          const SizedBox(height: 40,),
-                          Text(introList[currentIndex].title, style: TextStyle(),),
-                          const SizedBox(height: 20,),
-                          Text(introList[currentIndex].subtitle),
-                        ],
-                      ),
-                )
+                child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(introList[currentIndex].image, height: 270, width: double.infinity, fit: BoxFit.contain,),
+                        const SizedBox(height: 35,),
+                        Text(introList[currentIndex].title, style: const TextStyle(fontSize: 25, fontFamily: 'PoppinsSemiBold',), textAlign: TextAlign.center,),
+                        const SizedBox(height: 10,),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: Text(introList[currentIndex].subtitle, style: const TextStyle(fontSize: 18, fontFamily: 'PoppinsRegular', color: Color(0xAAB4B4B4)), textAlign: TextAlign.center,),
+                        ),
+                      ],
+                    )
               ),
               Positioned(
                 left: 0,
                 right: 0,
-                bottom: 150,
+                bottom: 100,
                 child: Align(
                   alignment: Alignment.center,
                   child: ButtonCircleWidget(icon: "assets/images/arrow_next_icon.png", onPress: onPressSetting)),

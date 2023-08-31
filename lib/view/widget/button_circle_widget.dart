@@ -4,11 +4,13 @@ class ButtonCircleWidget extends StatefulWidget {
   final String icon;
   final VoidCallback onPress;
   final Color backgroundColor;
+  final double diameter;
 
   const ButtonCircleWidget({
     Key? key,
     required this.icon,
     required this.onPress,
+    this.diameter = 70,
     this.backgroundColor = const Color(0xAA0373F3),
   }) : super(key: key);
 
@@ -24,8 +26,8 @@ class _ButtonCircleWidget extends State<ButtonCircleWidget> {
     return GestureDetector(
       onTap: widget.onPress,
       child: Container(
-        height: 70,
-        width: 70,
+        height: widget.diameter,
+        width: widget.diameter,
         decoration: BoxDecoration(
           color: widget.backgroundColor,
           borderRadius: BorderRadius.circular(36),
@@ -33,7 +35,7 @@ class _ButtonCircleWidget extends State<ButtonCircleWidget> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(widget.icon, width: 34, height: 34),
+            Image.asset(widget.icon, width: widget.diameter/2, height: widget.diameter/2),
           ],
         ),
       ),

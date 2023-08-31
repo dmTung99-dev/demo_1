@@ -11,7 +11,7 @@ class InputWidget extends StatefulWidget {
 
   const InputWidget({
     Key? key,
-    required this.lable,
+    this.lable = '',
     required this.hintText,
     required this.controller,
     this.keyboardType = TextInputType.text,
@@ -29,12 +29,15 @@ class _InputWidgetState extends State<InputWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100,
+      height: widget.lable.isNotEmpty ? 100 : 50,
+      width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(widget.lable, style: const TextStyle(fontSize: 14, fontFamily: 'PoppinsRegular', color: Color(0xAAADADAD)),),
-          const SizedBox(height: 10,),
+          if (widget.lable.isNotEmpty) ...[
+            Text(widget.lable, style: const TextStyle(fontSize: 14, fontFamily: 'PoppinsRegular', color: Color(0xAAADADAD)),),
+            const SizedBox(height: 10,),
+          ],
           SizedBox(
             height: 50,
             child: TextField(
@@ -47,8 +50,8 @@ class _InputWidgetState extends State<InputWidget> {
                   scale: 0.4,
                   child: Image.asset(widget.iconInput),
                 ),
-                suffixIcon:   widget.suffixButton != null ? Container(
-                  constraints: BoxConstraints(maxWidth: 150),
+                suffixIcon: widget.suffixButton != null ? Container(
+                  constraints: const BoxConstraints(maxWidth: 150),
                   child: widget.suffixButton,
                 ) : null,
                 border: OutlineInputBorder(

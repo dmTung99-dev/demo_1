@@ -70,6 +70,12 @@ flutter:
     - family: PoppinsMedium
       fonts: 
         - asset: assets/font/Poppins/Poppins-Medium.ttf
+    - family: AndikaRegular
+      fonts: 
+        - asset: assets/font/Andika/Andika-Regular.ttf
+    - family: AndikaBold
+      fonts: 
+        - asset: assets/font/Andika/Andika-Bold.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:
