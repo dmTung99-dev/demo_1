@@ -41,3 +41,26 @@ List<PopularLocationsList> popularLocationsList01 = [
     rating: 4.9,
   ),
 ];
+
+List<PopularLocationsList> popularLocationsList02 = [
+  PopularLocationsList(
+    image: 'assets/images/western_strait_01.png',
+    name: 'Western Starit 01',
+    numberLocations: 16,
+  ),
+  PopularLocationsList(
+    image: 'assets/images/beach_house_01.png',
+    name: 'Beach house 01',
+    numberLocations: 22,
+  ),
+  PopularLocationsList(
+    image: 'assets/images/western_strait_02.png',
+    name: 'Western Starit 02',
+    numberLocations: 36,
+  ),
+  PopularLocationsList(
+    image: 'assets/images/beach_house_02.png',
+    name: 'Beach house 02',
+    numberLocations: 44,
+  ),
+];

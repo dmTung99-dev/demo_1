@@ -13,7 +13,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchController = TextEditingController();
-  late PageController pageController;
+  late ScrollController popularList01Controller;
+  late ScrollController popularList02Controller;
   int currentIndex = 0;
 
   void onPressFilter() {
@@ -23,13 +24,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    pageController = PageController(viewportFraction: 0.45);
+    popularList01Controller = ScrollController();
+    popularList02Controller = ScrollController();
     super.initState();
   }
 
   @override
   void dispose() {
-    pageController.dispose();
+    popularList01Controller.dispose();
+    popularList02Controller.dispose();
     super.dispose();
   }
 
@@ -112,6 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: popularLocationsList01.length,
+                        controller: popularList01Controller,
                         itemBuilder: (context, index) {
                           return Container(
                             height: 150,
@@ -185,6 +189,56 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
+            SizedBox(height: 40,),
+            Container(
+              height: 300,
+              width: double.infinity,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Popular locations', style: TextStyle(fontSize: 20, fontFamily: 'PoppinsSemiBold'),),
+                  SizedBox(height: 10,),
+                  Container(
+                    height: 200,
+                    width: double.infinity,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      controller: popularList02Controller,
+                      itemCount: popularLocationsList02.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          height: 200,
+                          width: 142,
+                          margin: EdgeInsets.only( right: index == popularLocationsList01.length - 1 ? 0 : 10),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(17),
+                          ),
+                          child: Stack(
+                            children: [
+                              Image.asset(popularLocationsList02[index].image, fit: BoxFit.cover),
+                              Positioned(
+                                left: 0,
+                                right: 0,
+                                bottom: 10,
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  child: Column(
+                                    children: [
+                                      Text(popularLocationsList02[index].name, style: TextStyle(fontSize: 16, fontFamily: 'AndikaRegular', color: Colors.white),),
+                                      Text('${popularLocationsList02[index].numberLocations} ${popularLocationsList02[index].numberLocations == 1 ? 'location' : 'locations'}',style: TextStyle(fontSize: 12, fontFamily: 'PoppinsRegular', color: Colors.white),)
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        );
+                    },
+                    ),
+                  )
+                ],
+              ),
+            )
           ],
         ),
       ),
